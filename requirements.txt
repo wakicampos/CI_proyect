@@ -16,4 +16,3 @@ aiohttp
 aiogram
 anyio
 pytest-asyncio
-os
