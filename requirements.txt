@@ -1,4 +1,4 @@
-﻿anyio==4.0.0
+﻿anyio
 certifi==2023.7.22
 charset-normalizer==3.3.0
 h11==0.14.0
