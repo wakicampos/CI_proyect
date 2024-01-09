@@ -13,3 +13,4 @@ urllib3
 pytest
 asyncio
 aiohttp
+aiogram
