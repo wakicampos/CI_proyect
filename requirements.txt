@@ -12,3 +12,4 @@ telegram==0.0.1
 urllib3==2.0.6
 pytest==7.0.0
 asyncio
+aiohttp==3.8.6
