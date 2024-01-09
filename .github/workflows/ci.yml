@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.x
@@ -16,10 +16,10 @@ jobs:
         pip install -r requirements.txt
     - name: Run pytest
       run: |
-        pytest test_functions.py
+        pytest CI_proyect/test_functions.py
     - name: Run test-main.py
       run: |
-        python3 bot_telegram.py
+        python3 CI_proyect/bot_telegram.py
       env:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         OTRO_SECRETO: ${{ secrets.OTRO_SECRETO }}
