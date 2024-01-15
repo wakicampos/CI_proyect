@@ -18,10 +18,8 @@ async def monitor_website(url, interval, bot_token, chat_id):
 
     except asyncio.CancelledError:
         await send_telegram_message(bot_token, chat_id, f"La tarea ha sido cancelada.")
-        break
     finally:
         await send_telegram_message(bot_token, chat_id, f"Cierre del bot...")
-        break
 
 if __name__ == "__main__":
     url = "http://scanme.nmap.org"
@@ -29,4 +27,3 @@ if __name__ == "__main__":
     bot_token = os.getenv('BOT_TOKEN')
     chat_id = os.getenv('CHAT_ID')
     asyncio.run(monitor_website(url, interval, bot_token, chat_id))
-    
