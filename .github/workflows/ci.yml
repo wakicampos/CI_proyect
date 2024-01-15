@@ -20,6 +20,3 @@ jobs:
     - name: Run test-main.py
       run: |
         python3 bot_telegram.py
-      env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        CHAT_ID: ${{ secrets.CHAT_ID }}
