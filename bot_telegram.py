@@ -2,7 +2,8 @@ from functions import is_port_open, is_service_running, is_http_200_ok, send_tel
 import asyncio
 import os
 
-async def monitor_website(url, interval, bot_token, chat_id):
+try:
+    async def monitor_website(url, interval, bot_token, chat_id):
     while True:
         if not await is_service_running(url):
             await send_telegram_message(bot_token, chat_id, f"El servicio web en {url} no está funcionando.")
@@ -14,6 +15,15 @@ async def monitor_website(url, interval, bot_token, chat_id):
             await send_telegram_message(bot_token, chat_id, f"El servicio web en {url} está devolviendo un código de estado HTTP que no es 200.")
             break
         await asyncio.sleep(interval)
+        
+    except asyncio.CancelledError:
+        send_telegram_message(bot_token, chat_id, f"La tarea ha sido cancelada.")
+        break
+        
+finally:
+    send_telegram_message(bot_token, chat_id, f"Cierre del bot...")
+    break
+
         
 if __name__ == "__main__":
     url = "http://scanme.nmap.org"
