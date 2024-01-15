@@ -1,3 +1,5 @@
+import sys
+sys.path.append('.')
 from functions import is_port_open, is_service_running, is_http_200_ok, send_telegram_message
 import asyncio
 import os
