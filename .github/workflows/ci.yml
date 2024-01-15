@@ -18,5 +18,8 @@ jobs:
       run: |
         pytest test_functions.py
     - name: Run bot_telegram.py
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        CHAT_ID: ${{ secrets.TELEGRAM_TOKEN }}
       run: |
         python3 bot_telegram.py
