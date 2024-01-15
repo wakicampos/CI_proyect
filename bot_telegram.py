@@ -13,7 +13,7 @@ async def monitor_website(url, interval, bot_token, chat_id):
             else:
                 await send_telegram_message(bot_token, chat_id, f"Se detectó un problema en {url}.")
                 break
-            await asyncio.sleep(interval)l)
+            await asyncio.sleep(interval)
 
     except asyncio.CancelledError:
         await send_telegram_message(bot_token, chat_id, f"La tarea ha sido cancelada.")
