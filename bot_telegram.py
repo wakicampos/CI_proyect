@@ -18,6 +18,6 @@ async def monitor_website(url, interval, bot_token, chat_id):
 if __name__ == "__main__":
     url = "http://scanme.nmap.org"
     interval = 10 # segundos
-    bot_token = "os.environ.get('BOT_TOKEN')"
-    chat_id = "os.environ.get('CHAT_ID')"
+    bot_token = "6573594161:AAG0EA0Awrt7CeL97-bDwOowNBsk4C8nRgc"
+    chat_id = "1981377416"
     asyncio.run(monitor_website(url, interval, bot_token, chat_id))
