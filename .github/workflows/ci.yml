@@ -16,7 +16,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run pytest
       run: |
-        pytest test_functions.py
+        pytest test_main.py
     - name: Run bot_telegram.py
       env:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
