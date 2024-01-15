@@ -5,16 +5,13 @@ import asyncio
 import os
 
 async def monitor_website(url, interval, bot_token, chat_id):
-    try:
+ try:
         while True:
-            if not await is_service_running(url):
-                await send_telegram_message(bot_token, chat_id, f"El servicio web en {url} no está funcionando.")
-                break
-            elif not await is_port_open(url, 80):
-                await send_telegram_message(bot_token, chat_id, f"El puerto 80 de {url} está cerrado o no responde.")
-                break
-            elif not await is_http_200_ok(url):
-                await send_telegram_message(bot_token, chat_id, f"El servicio web en {url} está devolviendo un código de estado HTTP que no es 200.")
+            # Comprueba si el servicio está funcionando, el puerto está abierto y el estado HTTP es 200
+            if await is_service_running(url) and await is_port_open(url, 80) and await is_http_200_ok(url):
+                await send_telegram_message(bot_token, chat_id, f"Todo en orden con el servicio en {url}.")
+            else:
+                await send_telegram_message(bot_token, chat_id, f"Se detectó un problema en {url}.")
                 break
             await asyncio.sleep(interval)
 
