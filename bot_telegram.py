@@ -7,22 +7,13 @@ import os
 async def monitor_website(url, interval, bot_token, chat_id):
     try:
         while True:
-            service_running = await is_service_running(url)
-            port_open = await is_port_open(url, 80)
-            http_200_ok = await is_http_200_ok(url)
-
-            if not port_open:
-                await send_telegram_message(bot_token, chat_id, f"El puerto 80 de {url} está cerrado o no responde.")
+            # Comprueba si el servicio está funcionando, el puerto está abierto y el estado HTTP es 200
+            if await is_service_running(url) and await is_port_open(url, 80) and await is_http_200_ok(url):
+                await send_telegram_message(bot_token, chat_id, f"Todo en orden con el servicio en {url}.")
+            else:
+                await send_telegram_message(bot_token, chat_id, f"Se detectó un problema en {url}.")
                 break
-            elif not service_running:
-                await send_telegram_message(bot_token, chat_id, f"El puerto responde pero el servicio web en {url} no está funcionando.")
-                break
-            elif not http_200_ok:
-                await send_telegram_message(bot_token, chat_id, f"El servicio web en {url} está devolviendo un código de estado HTTP que no es 200.")
-                break
-
-            await asyncio.sleep(interval)
-
+            await asyncio.sleep(interval)l)
 
     except asyncio.CancelledError:
         await send_telegram_message(bot_token, chat_id, f"La tarea ha sido cancelada.")
