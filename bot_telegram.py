@@ -24,7 +24,7 @@ async def monitor_website(url, interval, bot_token, chat_id):
         await send_telegram_message(bot_token, chat_id, f"Cierre del bot...")
 
 if __name__ == "__main__":
-    url = "http://www.google.com/"
+    url = "http://scanme.nmap.org/"
     interval = 10  # segundos
     bot_token = os.getenv('BOT_TOKEN')
     chat_id = os.getenv('CHAT_ID')
