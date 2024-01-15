@@ -12,7 +12,8 @@ async def is_port_open(url, port):
 async def is_service_running(url):
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(url):
+            try:
+                async with session.get(url) as response:
                 return True
     except:
         return False
