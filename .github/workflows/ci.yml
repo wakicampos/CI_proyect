@@ -17,6 +17,6 @@ jobs:
     - name: Run pytest
       run: |
         pytest test_functions.py
-    - name: Run test-main.py
+    - name: Run bot_telegram.py
       run: |
         python3 bot_telegram.py
